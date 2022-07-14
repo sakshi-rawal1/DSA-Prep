@@ -14,7 +14,7 @@ class Solution {
 TC-O(nlogn)
 SC- O(1)
 
-
+//Most Voting Algo 
 class Solution {
     public int majorityElement(int[] nums) {
         int count =0;
