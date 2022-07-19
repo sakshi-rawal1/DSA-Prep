@@ -40,3 +40,11 @@ class Solution {
         
     }
 }
+
+TC - O(N*P*O)
+N is length of words
+P is avg length of all the words
+O is the no. of moves in char by char
+
+SC - O(S)
+S is length of order ie 26
