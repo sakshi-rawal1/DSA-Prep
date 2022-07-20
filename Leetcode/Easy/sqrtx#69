@@ -37,5 +37,7 @@ class Solution {
     }
 }
 
+
+//mid * mid will overflow in int so take long
 TC - O(log n)
 SC - O(1)
