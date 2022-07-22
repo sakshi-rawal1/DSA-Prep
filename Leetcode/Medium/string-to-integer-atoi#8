@@ -1,0 +1,57 @@
+Input: s = "42"
+Output: 42
+
+Input: s = "   +42"
+Output: 42
+
+Input: s = "   -+42"
+Output: 0
+
+Input: s = " hello  +42"
+Output: 0
+
+Input: s = "   -4.2"
+Output: -4
+
+Input: s = " 9997651110012"
+Output: Integer.MAX_VALUE is printed
+// same is the case with Integer.MIN_VALUE
+
+Input: s = "   -098"
+Output: -98
+
+Input: s = "   "
+Output: 0
+
+class Solution {
+    public int myAtoi(String s) {
+        s=s.trim();
+        if(s==null || s.length()==0) return 0;
+        
+        double digit = 0;
+        boolean isNeg = false;
+       
+        int start = 0;
+        if(s.charAt(0) == '+')start = 1;
+        if(s.charAt(0) == '-'){
+            start = 1;
+            isNeg = true;
+        }
+        for(int i = start;i<s.length();i++){
+            if(s.charAt(i)<'0' || s.charAt(i)>'9')break;
+            digit = digit*10 + (int)(s.charAt(i) - '0');
+        }
+       
+        if(isNeg){
+            if(digit > Integer.MAX_VALUE){
+                return Integer.MIN_VALUE;
+            }
+            digit = -digit;
+        } 
+        if(digit > Integer.MAX_VALUE){
+                return Integer.MAX_VALUE;
+        }
+        return (int)digit;
+        
+    }
+}
