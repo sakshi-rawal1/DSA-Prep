@@ -1,0 +1,36 @@
+Given an array nums of integers, return how many of them contain an even number of digits.
+
+ 
+
+Example 1:
+
+Input: nums = [12,345,2,6,7896]
+Output: 2
+
+class Solution {
+    public int findNumbers(int[] nums) {
+        int countOfEvenLengthDigits = 0;
+        for(int i:nums){
+            int digitLength = (int)Math.floor(Math.log10(i)+1);
+            if((digitLength&1)==0)countOfEvenLengthDigits++;
+        }
+        return countOfEvenLengthDigits;
+    }
+}
+
+or
+
+for Java folks
+
+public int findNumbers(int[] nums) {
+IntStream intStream = Arrays.stream(nums);
+long total = intStream.filter(num -> (int) (Math.log10(num) + 1)%2==0).count();
+return (int) total;
+}
+
+or
+
+public int findNumbers(int[] nums) {
+IntStream intStream = Arrays.stream(nums);
+return (int) intStream.filter(num -> (int) (Math.log10(num) + 1)%2==0).count();
+}
