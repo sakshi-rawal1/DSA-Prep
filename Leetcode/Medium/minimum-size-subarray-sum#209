@@ -1,0 +1,38 @@
+Given an array of positive integers nums and a positive integer target, return the minimal 
+length of a contiguous subarray [numsl, numsl+1, ..., numsr-1, numsr] of which the sum is 
+greater than or equal to target. If there is no such subarray, return 0 instead.
+
+
+Example 1:
+
+Input: target = 7, nums = [2,3,1,2,4,3]
+Output: 2
+Explanation: The subarray [4,3] has the minimal length under the problem constraint.
+
+class Solution {
+    public int minSubArrayLen(int target, int[] nums) {
+        //define pointers
+        int N = nums.length;
+        int L = 0;
+        int R = 0;
+        int min = Integer.MAX_VALUE;
+        int sum = 0;
+        int size = 0;
+        //find the current sum and update the min
+        while(L<N && R<N){
+            if(sum<target){
+                sum += nums[R];
+                size = R-L+1;
+                R++;
+            }
+            while(sum>=target){
+                min = Math.min(min,size);
+                sum -= nums[L];
+                L++;
+                size--;
+            }
+            
+        }
+        return min==Integer.MAX_VALUE?0:min;
+    }
+}
